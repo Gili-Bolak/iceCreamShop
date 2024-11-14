@@ -21,12 +21,10 @@ const YogurtsM = () => {
 
     const [codeAdd, setCodeAdd] = useState("");
     const [descriptionAdd, setDescriptionAdd] = useState("");
-    const [stockAdd, setStockAdd] = useState("");
     const [priceAdd, setPriceAdd] = useState("");
     const [imgUrlAdd, setImgUrlAdd] = useState("");
 
     const [descriptionUpdate, setDescriptionUpdate] = useState("");
-    const [stockUpdate, setStockUpdate] = useState("");
     const [priceUpdate, setPriceUpdate] = useState("");
     const [imgUrlUpdate, setImgUrlUpdate] = useState("");
 
@@ -74,7 +72,6 @@ const YogurtsM = () => {
 
         formData.append("_id", yogurt._id)
         formData.append("description", descriptionUpdate)
-        formData.append("stock", stockUpdate)
         formData.append("price", priceUpdate)
         formData.append("image", imgUrlUpdate)
 
@@ -108,10 +105,6 @@ const YogurtsM = () => {
         formData.append("description", descriptionAdd)
         formData.append("price", priceAdd)
         formData.append("image", imgUrlAdd)
-
-        if (stockAdd) {
-            formData.append("stock", stockAdd)
-        }
 
         addFunc(formData)
     }
@@ -166,7 +159,6 @@ const YogurtsM = () => {
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">קוד מוצר: {yogurts.code}</div>
                             <div className="text-2xl font-bold text-900">{yogurts.description}</div>
-                            <div className="text-1xl font-bold text-900">המלאי עומד על: {yogurts.stock}</div>
                         </div>
                         <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                             <span className="text-2xl font-semibold">{yogurts.price} ₪</span>
@@ -175,7 +167,6 @@ const YogurtsM = () => {
                                 setVisibleUpdate(true);
                                 setUpdateyogurt(yogurts);
                                 setDescriptionUpdate(yogurts.description);
-                                setStockUpdate(yogurts.stock);
                                 setPriceUpdate(yogurts.price);
                                 setImgUrlUpdate(yogurts.imgUrl);
                             }} />
@@ -195,14 +186,6 @@ const YogurtsM = () => {
                                                 }}
                                             />
                                             <label htmlFor="מחיר">מחיר*</label>
-                                        </span>
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <div className="dialogInput">
-                                        <span className="p-float-label">
-                                            <InputText keyfilter="int" value={stockUpdate} onChange={(e) => setStockUpdate(e.target.value)} />
-                                            <label htmlFor="מלאי">מלאי</label>
                                         </span>
                                     </div>
                                     <br />
@@ -233,7 +216,6 @@ const YogurtsM = () => {
                         <img className="w-9 shadow-2 border-round" src={`http://localhost:8050/uploads/${yogurts?.image?.split("\\")[2]}`} alt={yogurts.name} />
                         <div className="text-2xl font-bold text-900">קוד מוצר: {yogurts.code}</div>
                         <div className="gridDescription">{yogurts.description}</div>
-                        <div className="text-1xl font-bold text-900">המלאי עומד על: {yogurts.stock}</div>
                     </div>
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">{yogurts.price} ₪</span>
@@ -243,7 +225,6 @@ const YogurtsM = () => {
                                 setVisibleUpdate(true);
                                 setUpdateyogurt(yogurts);
                                 setDescriptionUpdate(yogurts.description);
-                                setStockUpdate(yogurts.stock);
                                 setPriceUpdate(yogurts.price);
                                 setImgUrlUpdate(yogurts.imgUrl);
                             }} />
@@ -263,14 +244,6 @@ const YogurtsM = () => {
                                                 }}
                                             />
                                             <label htmlFor="מחיר">מחיר*</label>
-                                        </span>
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <div className="dialogInput">
-                                        <span className="p-float-label">
-                                            <InputText keyfilter="int" value={stockUpdate} onChange={(e) => setStockUpdate(e.target.value)} />
-                                            <label htmlFor="מלאי">מלאי</label>
                                         </span>
                                     </div>
                                     <br />
@@ -313,7 +286,6 @@ const YogurtsM = () => {
                     setVisibleAdd(true);
                     setCodeAdd("");
                     setDescriptionAdd("");
-                    setStockAdd("");
                     setPriceAdd("");
                     setImgUrlAdd("");
                 }} />
@@ -332,14 +304,6 @@ const YogurtsM = () => {
                                         setCodeDisabled(!e.target.value.trim())
                                     }} />
                                 <label htmlFor="קוד">קוד*</label>
-                            </span>
-                        </div>
-                        <br />
-                        <br />
-                        <div className="dialogInput">
-                            <span className="p-float-label">
-                                <InputText keyfilter="int" value={stockAdd} onChange={(e) => setStockAdd(e.target.value)} />
-                                <label htmlFor="מלאי">מלאי</label>
                             </span>
                         </div>
                         <br />

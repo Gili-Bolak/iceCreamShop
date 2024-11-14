@@ -19,7 +19,7 @@ const getBasketsByUser = async (req, res) => {
             path: 'items',
             populate: {
                 path: 'item',
-                select: 'description category price stock image'
+                select: 'description category price image'
             }
         });
 

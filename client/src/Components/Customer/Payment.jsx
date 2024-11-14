@@ -8,7 +8,6 @@ import Summary from "./Summary";
 import { useNavigate } from "react-router-dom";
 import { useDeleteBasketMutation, useGetBasketsUserQuery } from "../../Store/basketApiSlice";
 import useAuth from "../Hooks/useAuth";
-import { useUpdateStockMutation } from "../../Store/itemApiSlice";
 import { useCreateOrderMutation } from "../../Store/orderApiSlice";
 
 const Payment = ({details, shipping }) => {
@@ -18,7 +17,6 @@ const Payment = ({details, shipping }) => {
     const [DeleteBasket] = useDeleteBasketMutation()
     const { _id } = useAuth()
     const { data } = useGetBasketsUserQuery(_id)
-    const [updateStockFunc] = useUpdateStockMutation()
     const Navigate = useNavigate()
     const [CreateOrder]= useCreateOrderMutation()
 
@@ -29,24 +27,14 @@ const Payment = ({details, shipping }) => {
             const filteredProducts = [];
 
             data.items.forEach(product => {
-                if (product.item.stock > product.quantity) {
-                    sum += (product.item.price) * (product.quantity);
-                    filteredProducts.push(product);
-                }
+                sum += (product.item.price) * (product.quantity);
+                filteredProducts.push(product);
             });
 
             setProducts(filteredProducts);
             setPrice(sum);
         }
     }, [data]);
-
-    const updateStock = () => {
-        data.items.map(f => updateStockFunc({
-            _id: f.item._id,
-            quantity: f.quantity
-        }))
-    }
-
 
     const formik = useFormik({
         initialValues: {
@@ -77,7 +65,6 @@ const Payment = ({details, shipping }) => {
             return errors;
         },
         onSubmit: () => {
-            updateStock()
             CreateOrder({
                 user: data.user,
                 items: products,

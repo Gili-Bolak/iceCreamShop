@@ -17,10 +17,8 @@ const Summary = ({ shipping }) => {
             const filteredProducts = [];
 
             data.items.forEach(product => {
-                if (product.item.stock > product.quantity) {
-                    sum += (product.item.price) * (product.quantity);
-                    filteredProducts.push(product);
-                }
+                sum += (product.item.price) * (product.quantity);
+                filteredProducts.push(product);
             });
 
             setProducts(filteredProducts);

@@ -18,7 +18,6 @@ const ShopM = () => {
 
 
     const [descriptionUpdate, setDescriptionUpdate] = useState("");
-    const [stockUpdate, setStockUpdate] = useState("");
     const [priceUpdate, setPriceUpdate] = useState("");
     const [imgUrlUpdate, setImgUrlUpdate] = useState("");
 
@@ -61,7 +60,6 @@ const ShopM = () => {
 
         formData.append("_id", item._id)
         formData.append("description", descriptionUpdate)
-        formData.append("stock", stockUpdate)
         formData.append("price", priceUpdate)
         formData.append("image", imgUrlUpdate)
 
@@ -110,7 +108,6 @@ const ShopM = () => {
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">קוד מוצר: {item.code}</div>
                             <div className="text-2xl font-bold text-900">{item.description}</div>
-                            <div className="text-1xl font-bold text-900">המלאי עומד על: {item.stock}</div>
                         </div>
                         <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                             <span className="text-2xl font-semibold">{item.price} ₪</span>
@@ -119,7 +116,6 @@ const ShopM = () => {
                                 setVisibleUpdate(true);
                                 setUpdateItem(item);
                                 setDescriptionUpdate(item.description);
-                                setStockUpdate(item.stock);
                                 setPriceUpdate(item.price);
                                 setImgUrlUpdate(item.imgUrl);
                             }} />
@@ -139,14 +135,6 @@ const ShopM = () => {
                                                 }}
                                             />
                                             <label htmlFor="מחיר">מחיר*</label>
-                                        </span>
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <div className="dialogInput">
-                                        <span className="p-float-label">
-                                            <InputText keyfilter="int" value={stockUpdate} onChange={(e) => setStockUpdate(e.target.value)} />
-                                            <label htmlFor="מלאי">מלאי</label>
                                         </span>
                                     </div>
                                     <br />
@@ -177,7 +165,6 @@ const ShopM = () => {
                         <img className="w-9 shadow-2 border-round" src={`http://localhost:8050/uploads/${item?.image?.split("\\")[2]}`} alt={item.name} />
                         <div className="text-2xl font-bold text-900">קוד מוצר: {item.code}</div>
                         <div className="gridDescription">{item.description}</div>
-                        <div className="text-1xl font-bold text-900">המלאי עומד על: {item.stock}</div>
                     </div>
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">{item.price} ₪</span>
@@ -187,7 +174,6 @@ const ShopM = () => {
                                 setVisibleUpdate(true);
                                 setUpdateItem(item);
                                 setDescriptionUpdate(item.description);
-                                setStockUpdate(item.stock);
                                 setPriceUpdate(item.price);
                                 setImgUrlUpdate(item.imgUrl);
                             }} />
@@ -207,14 +193,6 @@ const ShopM = () => {
                                                 }}
                                             />
                                             <label htmlFor="מחיר">מחיר*</label>
-                                        </span>
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <div className="dialogInput">
-                                        <span className="p-float-label">
-                                            <InputText keyfilter="int" value={stockUpdate} onChange={(e) => setStockUpdate(e.target.value)} />
-                                            <label htmlFor="מלאי">מלאי</label>
                                         </span>
                                     </div>
                                     <br />

@@ -36,8 +36,11 @@ const Customers = () => {
 
     if (isLoading) {
         return <div className='message'>Loading...</div>;
-    } else if (!data || data.length === 0) {
+    } else if (!data) {
         return <h3 className='message'>אופס משהו השתבש...</h3>;
+    }
+    else if(data.length === 0){
+        return <h3 className='message'>עדיין אין לקוחות...</h3>
     }
 
     const idBodyTemplate = (rowData) => {

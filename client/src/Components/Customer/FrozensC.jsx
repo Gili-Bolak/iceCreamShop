@@ -163,11 +163,10 @@ const FrozensC = () => {
                         <div className="gridDescription">{frozen.description}</div>
                     </div>
 
-                    {frozen.stock < 1 ? <div>אזל מהמלאי</div> : <div></div>}
 
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">{frozen.price} ₪</span>
-                        <Button disabled={frozen.stock < 1} icon="pi pi-shopping-cart" className="p-button-rounded" onClick={() => HandleToBasket(frozen)}></Button>
+                        <Button icon="pi pi-shopping-cart" className="p-button-rounded" onClick={() => HandleToBasket(frozen)}></Button>
                     </div>
                 </div>
             </div>

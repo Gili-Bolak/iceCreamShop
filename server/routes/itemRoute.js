@@ -24,7 +24,6 @@ router.get("/", itemController.getAllItem)
 router.get("/:category", itemController.getItemByCategory)
 router.post("/", managerJWT,upload.single('image'), itemController.createNewItem)
 router.put("/:_id", managerJWT,upload.single('image'), itemController.updateItem)
-router.put("/:_id/stock", verifyJWT, itemController.updateStock)
 router.delete("/:_id", managerJWT, itemController.deleteItem)
 
 

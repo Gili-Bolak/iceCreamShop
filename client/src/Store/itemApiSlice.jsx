@@ -31,14 +31,6 @@ const itemApiSlice = apiSlice.injectEndpoints({
             }),
             invalidatesTags: ["Items"]
         }),
-        updateStock: build.mutation({
-            query: (item) => ({
-                url: `api/item/${item._id}/stock`,
-                method: "PUT",
-                body: item
-            }),
-            invalidatesTags: ["Items"]
-        }),
         deleteItem: build.mutation({
             query: (_id) => ({
                 url: `api/item/${_id}`,
@@ -50,4 +42,4 @@ const itemApiSlice = apiSlice.injectEndpoints({
 })
 
 
-export const { useGetAllItemQuery, useGetItemByCategoryQuery, useAddItemMutation, useUpdateItemMutation, useUpdateStockMutation, useDeleteItemMutation } = itemApiSlice
+export const { useGetAllItemQuery, useGetItemByCategoryQuery, useAddItemMutation, useUpdateItemMutation, useDeleteItemMutation } = itemApiSlice

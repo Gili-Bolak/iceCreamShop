@@ -107,7 +107,6 @@ const BasketC = () => {
                                 max={100}
                             />
                             <br /><br />
-                            {f.item.stock < f.quantity ? <div className='redMessage'>נותרו פריטים {f.item.stock} במלאי</div> : <div></div>}
                         </div>
 
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">

@@ -27,7 +27,7 @@ const getItemByCategory = async (req, res) => {
 
 
 const createNewItem = async (req, res) => {
-    const { code, category, description, price, stock } = req.body
+    const { code, category, description, price } = req.body
 
     if (!code || !category || !price) {
         return res.status(400).json({ message: 'fields code, category and price are required' })
@@ -38,7 +38,7 @@ const createNewItem = async (req, res) => {
         return res.status(409).json({ message: "Duplicate code" })
     }
 
-    const newItem = await Item.create({ code, category, description, price, stock, image: req.file.path })
+    const newItem = await Item.create({ code, category, description, price, image: req.file.path })
     if (newItem) {
         return res.json(`item ${newItem.code} created`)
     }
@@ -48,7 +48,7 @@ const createNewItem = async (req, res) => {
 
 const updateItem = async (req, res) => {
 
-    const { _id, description, price, stock } = req.body
+    const { _id, description, price } = req.body
     if (!_id || !price) {
         return res.status(400).json({ message: 'fields id and price are required' })
     }
@@ -60,30 +60,10 @@ const updateItem = async (req, res) => {
 
     updItem.description = description
     updItem.price = price
-    updItem.stock = stock
     if (req.file){
         updItem.image = req.file.path
     }
         
-    const theUpdateItem = await updItem.save()
-    res.json(`${theUpdateItem.code} updated`)
-}
-
-
-const updateStock = async (req, res) => {
-    const { _id } = req.params
-    const { quantity } = req.body
-    if (!_id || !quantity) {
-        return res.status(400).json({ message: 'fields id and quantity are required' })
-    }
-
-    const updItem = await Item.findById(_id)
-    if (!updItem) {
-        res.status(400).json({ message: 'Item not found' })
-    }
-
-    updItem.stock -= quantity;
-
     const theUpdateItem = await updItem.save()
     res.json(`${theUpdateItem.code} updated`)
 }
@@ -103,4 +83,4 @@ const deleteItem = async (req, res) => {
 }
 
 
-module.exports = { getAllItem, getItemByCategory, createNewItem, updateItem, updateStock, deleteItem }
+module.exports = { getAllItem, getItemByCategory, createNewItem, updateItem, deleteItem }
